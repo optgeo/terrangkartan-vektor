@@ -1,0 +1,47 @@
+{
+  "layers": [
+    {
+      "id": "relief",
+      "maxzoom": 10,
+      "minzoom": 0,
+      "paint": {
+        "raster-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          1,
+          10,
+          0
+        ]
+      },
+      "source": "relief",
+      "type": "raster"
+    }
+  ],
+  "site_root": "https://optgeo.github.io/terrangkartan-vektor",
+  "sources": {
+    "relief": {
+      "maxzoom": 5,
+      "minzoom": 0,
+      "tileSize": 512,
+      "tiles": [
+        "https://optgeo.github.io/relief/zxy/{z}/{x}/{y}.png"
+      ],
+      "type": "raster"
+    },
+    "v": {
+      "attribution": "TODO",
+      "maxzoom": 14,
+      "tiles": [
+        "https://optgeo.github.io/terrangkartan-vektor/zxy/{z}/{x}/{y}.pbf"
+      ],
+      "type": "vector"
+    }
+  },
+  "version": 8
+}
