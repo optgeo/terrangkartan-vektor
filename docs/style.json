@@ -23,7 +23,7 @@
       "type": "raster"
     }
   ],
-  "site_root": "https://optgeo.github.io/terrangkartan-vektor",
+  "site_root": "http://localost:9966",
   "sources": {
     "relief": {
       "maxzoom": 5,
@@ -38,7 +38,7 @@
       "attribution": "TODO",
       "maxzoom": 14,
       "tiles": [
-        "https://optgeo.github.io/terrangkartan-vektor/zxy/{z}/{x}/{y}.pbf"
+        "http://localost:9966/zxy/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     }

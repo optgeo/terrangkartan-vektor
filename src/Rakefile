@@ -1,0 +1,6 @@
+SRCDIR = "/home/pi/Downloads"
+
+task :extract do
+  sh "unzip -o \"#{SRCDIR}/*.zip\""
+end
+

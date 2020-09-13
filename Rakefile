@@ -9,13 +9,18 @@ LAYERS = %w{
 desc 'create tiles'
 task :tiles do
   cmd = []
-  LAYERS.each {|layer|
-    path = "src/terrang/01/#{layer}_01.shp"
-    cmd << "(ogr2ogr -oo ENCODING=ISO-8859-1 -f GeoJSONSeq /vsistdout/ #{path} | LAYER=#{layer} ruby filter.rb)"
+  1.upto(30) {|i|
+    d = sprintf('%02d', i)
+    LAYERS.each {|layer|
+      path = "src/terrang/#{d}/#{layer}_#{d}.shp"
+      next unless File.exist?(path)
+      cmd << "(ogr2ogr -oo ENCODING=ISO-8859-1 -f GeoJSONSeq /vsistdout/ #{path} | LAYER=#{layer} ruby filter.rb)"
+    }
   }
   cmd = "(#{cmd.join('; ')})"
   cmd += " | tippecanoe --no-feature-limit --no-tile-size-limit --force --simplification=2 --maximum-zoom=14 --base-zoom=14 --hilbert --output=tiles.mbtiles"
   sh cmd
+  sh "tile-join --force --no-tile-compression --output-to-directory=docs/zxy --no-tile-size-limit tiles.mbtiles"
 end
 
 desc 'create style'
