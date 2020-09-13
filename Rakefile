@@ -26,22 +26,22 @@ end
 desc 'create style'
 task :style do
   sh "parse-hocon hocon/style.conf > docs/style.json"
-#  center = JSON.parse(File.read('docs/zxy/metadata.json'))['center'].split(',')
-#    .map{|v| v.to_f }.slice(0, 2)
-#  style = JSON.parse(File.read('docs/style.json'))
-#  style['center'] = center
-#  File.write('docs/style.json', JSON.pretty_generate(style))
+  center = JSON.parse(File.read('docs/zxy/metadata.json'))['center'].split(',')
+    .map{|v| v.to_f }.slice(0, 2)
+  style = JSON.parse(File.read('docs/style.json'))
+  style['center'] = center
+  File.write('docs/style.json', JSON.pretty_generate(style))
   sh "gl-style-validate docs/style.json"
 end
 
 desc 'create style for GitHub pages'
 task :pages do
   sh "SITE_ROOT=#{GITHUB_URL} parse-hocon hocon/style.conf > docs/style.json"
-#  center = JSON.parse(File.read('docs/zxy/metadata.json'))['center'].split(',')
-#    .map{|v| v.to_f }.slice(0, 2)
-#  style = JSON.parse(File.read('docs/style.json'))
-#  style['center'] = center
-#  File.write('docs/style.json', JSON.pretty_generate(style))
+  center = JSON.parse(File.read('docs/zxy/metadata.json'))['center'].split(',')
+    .map{|v| v.to_f }.slice(0, 2)
+  style = JSON.parse(File.read('docs/style.json'))
+  style['center'] = center
+  File.write('docs/style.json', JSON.pretty_generate(style))
   sh "gl-style-validate docs/style.json"
 end
 

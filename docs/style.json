@@ -1,4 +1,8 @@
 {
+  "center": [
+    15.457764,
+    56.432129
+  ],
   "layers": [
     {
       "id": "relief",
@@ -21,9 +25,30 @@
       },
       "source": "relief",
       "type": "raster"
+    },
+    {
+      "id": "my",
+      "paint": {
+        "fill-color": [
+          "rgba",
+          0,
+          255,
+          255,
+          0.5
+        ]
+      },
+      "source": "v",
+      "source-layer": "my",
+      "type": "fill"
+    },
+    {
+      "id": "oh",
+      "source": "v",
+      "source-layer": "oh",
+      "type": "line"
     }
   ],
-  "site_root": "http://localost:9966",
+  "site_root": "http://localhost:9966",
   "sources": {
     "relief": {
       "maxzoom": 5,
@@ -38,10 +63,11 @@
       "attribution": "TODO",
       "maxzoom": 14,
       "tiles": [
-        "http://localost:9966/zxy/{z}/{x}/{y}.pbf"
+        "http://localhost:9966/zxy/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     }
   },
-  "version": 8
+  "version": 8,
+  "zoom": 8
 }
