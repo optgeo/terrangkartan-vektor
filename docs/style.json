@@ -1,12 +1,12 @@
 {
   "center": [
-    15.457764,
-    56.432129
+    11.392822,
+    58.487952
   ],
   "layers": [
     {
       "id": "relief",
-      "maxzoom": 10,
+      "maxzoom": 12,
       "minzoom": 0,
       "paint": {
         "raster-opacity": [
@@ -19,7 +19,7 @@
           ],
           6,
           1,
-          10,
+          12,
           0
         ]
       },
@@ -43,6 +43,14 @@
     },
     {
       "id": "oh",
+      "paint": {
+        "line-color": [
+          "rgb",
+          200,
+          160,
+          60
+        ]
+      },
       "source": "v",
       "source-layer": "oh",
       "type": "line"

@@ -1,5 +1,6 @@
 require 'json'
 
+# default tippecanoe properties
 TIPPECANOE = {
   "my" => {
     "layer" => "my",
@@ -8,19 +9,19 @@ TIPPECANOE = {
   },
   "oh" => {
     "layer" => "oh",
-    "minzoom" => 11,
+    "minzoom" => 13,
     "maxzoom" => 14
   }
 }
 
+# filters applied after adding default tippecanoe properties
 FILTERS = {
   "my" => -> (f) { 
-    if (f["properties"]["KKOD"] == 1)
-      f["tippecanoe"]["minzoom"] = 11
-    end
-    f
   },
   "oh" => -> (f) {
+    if (f['properties']['KKOD'] == 571)
+      f['tippecanoe']['minzoom'] = 11
+    end
     f
   }
 }

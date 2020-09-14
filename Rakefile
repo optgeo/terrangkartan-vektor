@@ -9,10 +9,9 @@ LAYERS = %w{
 desc 'create tiles'
 task :tiles do
   cmd = []
-  1.upto(30) {|i|
-    d = sprintf('%02d', i)
+  %w{middle north south riks}.each {|area|
     LAYERS.each {|layer|
-      path = "src/terrang/#{d}/#{layer}_#{d}.shp"
+      path = "src/terrang/#{area}/#{layer}_#{area}.shp"
       next unless File.exist?(path)
       cmd << "(ogr2ogr -oo ENCODING=ISO-8859-1 -f GeoJSONSeq /vsistdout/ #{path} | LAYER=#{layer} ruby filter.rb)"
     }
