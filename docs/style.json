@@ -1,7 +1,7 @@
 {
   "center": [
-    11.546631,
-    58.048818
+    11.392822,
+    58.487952
   ],
   "layers": [
     {
@@ -80,9 +80,23 @@
       "source": "v",
       "source-layer": "oh",
       "type": "line"
+    },
+    {
+      "id": "al",
+      "paint": {
+        "line-color": [
+          "rgb",
+          198,
+          40,
+          40
+        ]
+      },
+      "source": "v",
+      "source-layer": "al",
+      "type": "line"
     }
   ],
-  "site_root": "http://localhost:9966",
+  "site_root": "http://raspberrypi.local:9966",
   "sources": {
     "relief": {
       "maxzoom": 5,
@@ -97,7 +111,7 @@
       "attribution": "TODO",
       "maxzoom": 14,
       "tiles": [
-        "http://localhost:9966/zxy/{z}/{x}/{y}.pbf"
+        "http://raspberrypi.local:9966/zxy/{z}/{x}/{y}.pbf"
       ],
       "type": "vector"
     }

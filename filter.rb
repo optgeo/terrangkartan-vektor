@@ -1,21 +1,30 @@
 require 'json'
+MAXZOOM = 14
 
 # default tippecanoe properties
 TIPPECANOE = {
+  "al" => {
+    "layer" => "al",
+    "minzoom" => 10,
+    "maxzoom" => MAXZOOM
+  },
   "my" => {
     "layer" => "my",
     "minzoom" => 11,
-    "maxzoom" => 14
+    "maxzoom" => MAXZOOM
   },
   "oh" => {
     "layer" => "oh",
     "minzoom" => 13,
-    "maxzoom" => 14
+    "maxzoom" => MAXZOOM
   }
 }
 
 # filters applied after adding default tippecanoe properties
 FILTERS = {
+  "al" => -> (f) {
+    f
+  },
   "my" => -> (f) { 
     f
   },
@@ -34,4 +43,3 @@ while gets
   f = FILTERS[ENV["LAYER"]].call(f)
   print "\x1e#{JSON.dump(f)}\n"
 end
-  

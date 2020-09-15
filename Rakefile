@@ -4,7 +4,7 @@ GITHUB_URL = "https://optgeo.github.io/terrangkartan-vektor"
 LAN_URL = "http://raspberrypi.local:9966"
 
 LAYERS = %w{
-  my oh
+  my oh al
 }
 
 desc 'create tiles'
