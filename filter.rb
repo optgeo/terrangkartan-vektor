@@ -17,6 +17,7 @@ TIPPECANOE = {
 # filters applied after adding default tippecanoe properties
 FILTERS = {
   "my" => -> (f) { 
+    f
   },
   "oh" => -> (f) {
     if (f['properties']['KKOD'] == 571)
