@@ -1,6 +1,11 @@
 require 'json'
 require './filter.rb'
 
+MBTILES_DIR = '/mnt/ssd'
+MBTILES = '/mnt/ssd/tiles.mbtiles'
+TEMPORARY_DIRECTORY = '/tmp'
+SRC = '/mnt/ssd/src/terrang'
+
 GITHUB_URL = "https://optgeo.github.io/terrangkartan-vektor"
 LAN_URL = "http://#{`hostname`.strip}:9966"
 
@@ -9,20 +14,23 @@ LAYERS = FILTERS.keys
 desc 'create tiles'
 task :tiles do
   cmd = []
+  dsts = []
   %w{middle north south riks}.each {|area|
     LAYERS.each {|layer|
-      path = "src/terrang/#{area}/#{layer}_#{area}.shp"
+      path = "#{SRC}/#{area}/#{layer}_#{area}.shp"
       next unless File.exist?(path)
-      cmd << "(ogr2ogr -oo ENCODING=ISO-8859-1 -f GeoJSONSeq /vsistdout/ #{path} | LAYER=#{layer} ruby filter.rb)"
+      dst = "#{MBTILES_DIR}/#{layer}_#{area}.mbtiles"
+      dsts << dst
+      cmd << "(ogr2ogr -oo ENCODING=ISO-8859-1 -f GeoJSONSeq /vsistdout/ #{path} | LAYER=#{layer} ruby filter.rb | tippecanoe --no-progress-indicator --no-feature-limit --no-tile-size-limit --force --simplification=2 --minimum-zoom=#{MINZOOM} --maximum-zoom=#{MAXZOOM} --base-zoom=#{MAXZOOM} --hilbert --output=#{dst} --temporary-directory=#{TEMPORARY_DIRECTORY})"
     }
   }
   cmd = "(#{cmd.join('; ')})"
-  cmd += " | tippecanoe --no-progress-indicator --no-feature-limit --no-tile-size-limit --force --simplification=2 --minimum-zoom=#{MINZOOM} --maximum-zoom=#{MAXZOOM} --base-zoom=#{MAXZOOM} --hilbert --output=tiles.mbtiles"
+  cmd += "; tile-join -o #{MBTILES} #{dsts.join(' ')}"
   if ENV['DRY_RUN']
     p cmd
   else
     sh cmd
-    sh "tile-join --force --no-tile-compression --output-to-directory=docs/zxy --no-tile-size-limit tiles.mbtiles"
+    sh "tile-join --force --no-tile-compression --output-to-directory=docs/zxy --no-tile-size-limit #{MBTILES}"
   end
 end
 
@@ -62,5 +70,5 @@ end
 
 desc 'run vt-optimizer'
 task :optimize do
-  sh "node ../vt-optimizer/index.js -m tiles.mbtiles"
+  sh "node ../vt-optimizer/index.js -m #{MBTILES}"
 end

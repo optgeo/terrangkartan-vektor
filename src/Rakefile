@@ -1,8 +1,0 @@
-SRCDIR = "/home/pi/Downloads"
-
-desc 'extract shapefiles from zip files'
-task :extract do
-  #sh "unzip -o \"#{SRCDIR}/*.zip\""
-  sh "unzip -o ~/Downloads/tk_riks_Sweref_99_TM_shape.zip"
-end
-

@@ -25,6 +25,13 @@ map.addControl(new mapboxgl.NavigationControl())
 map.addControl(new mapboxgl.ScaleControl({
   maxWidth: 200, unit: 'metric'
 }))
+
+map.on('click', e => {
+  console.log(e.lngLat)
+  for(const f of map.queryRenderedFeatures(e.lngLat.toArray(), { layers: ['my'] })) {
+    console.log(`${f.geometry.type} ${JSON.stringify(f.properties)}`)
+  }
+})
 </script>
 </body>
 </html>

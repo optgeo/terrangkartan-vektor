@@ -114,6 +114,24 @@
       "type": "line"
     },
     {
+      "id": "bl",
+      "paint": {
+        "line-color": "#757575"
+      },
+      "source": "v",
+      "source-layer": "bl",
+      "type": "line"
+    },
+    {
+      "id": "fl",
+      "paint": {
+        "line-color": "#00796b"
+      },
+      "source": "v",
+      "source-layer": "fl",
+      "type": "line"
+    },
+    {
       "id": "by",
       "paint": {
         "fill-color": [
@@ -127,6 +145,33 @@
       "source": "v",
       "source-layer": "by",
       "type": "fill"
+    },
+    {
+      "id": "bs",
+      "paint": {
+        "circle-color": "#212121"
+      },
+      "source": "v",
+      "source-layer": "bs",
+      "type": "circle"
+    },
+    {
+      "id": "as",
+      "paint": {
+        "circle-color": "#ff0000"
+      },
+      "source": "v",
+      "source-layer": "as",
+      "type": "circle"
+    },
+    {
+      "id": "at",
+      "paint": {
+        "circle-color": "#ff0000"
+      },
+      "source": "v",
+      "source-layer": "at",
+      "type": "circle"
     }
   ],
   "site_root": "http://m343:9966",
